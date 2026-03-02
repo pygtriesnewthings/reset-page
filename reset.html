@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Back to Work</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #FFF6B7; /* pastel yellow */
+        color: #333;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    .box {
+        max-width: 500px;
+    }
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+        color: #C94C4C; /* muted red */
+    }
+    p {
+        opacity: 0.85;
+    }
+    button {
+        margin-top: 20px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #4A90E2; /* blue */
+        color: white;
+        font-weight: bold;
+    }
+    button:disabled {
+        background: #8FBCEB;
+        cursor: not-allowed;
+    }
+    #countdown {
+        font-size: 1.5rem;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h1>DISTRACTION DETECTED.</h1>
+    <p>Pause. Breathe. Reset.</p>
+    <p>Drink water. Fix posture. You’re still in control.</p>
+
+    <button id="startBtn" onclick="startBreathing()">Start 5-Second Reset</button>
+    <div id="countdown"></div>
+
+    <p style="margin-top:30px; font-weight:bold;">
+        DON'T GET DISTRACTED. GET BACK TO WORK.
+    </p>
+</div>
+
+<script>
+function startBreathing() {
+    const btn = document.getElementById("startBtn");
+    const countdown = document.getElementById("countdown");
+
+    btn.disabled = true;
+
+    let seconds = 5;
+    countdown.textContent = "Breathe in... " + seconds;
+
+    const interval = setInterval(() => {
+        seconds--;
+        if (seconds > 0) {
+            countdown.textContent = "Breathe in... " + seconds;
+        } else {
+            clearInterval(interval);
+            countdown.textContent = "Good. Now get back to work.";
+        }
+    }, 1000);
+}
+</script>
+
+</body>
+</html>
